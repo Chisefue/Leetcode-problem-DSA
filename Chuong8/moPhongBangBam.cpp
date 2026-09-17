@@ -24,7 +24,7 @@ int main() {
                     cout << "FULL\n";
                     break;
                 } else if (a[K % M].first == 0 || 
-                a[K & M].first == -1) {
+                a[K % M].first == -1) {
                     a[K % M] = {K, V};
                 }
             } else if (command == "GET") {
@@ -52,13 +52,17 @@ int main() {
                         break;
                     } else if (a[K % M].first == K) {
                         a[K % M].first = -1;
-                        cout << "DELETE\n";
+                        cout << "DELETED\n";
                         break;
                     } else if (a[K % M].first == -1 ||
                     a[K % M].first == 0) {
                         cout << "NOT_FOUND\n";
                         break;
                     }
+                }
+                if (prev == K) {
+                    a[K % M].first = -1;
+                    cout << "DELETED\n";
                 }
             }
         }
