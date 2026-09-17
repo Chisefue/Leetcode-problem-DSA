@@ -10,22 +10,28 @@ int sumString(string s) {
 }
 
 int main() {
-    int N;
+    int N, key;
     cin >> N;
     string s_i; 
-    unordered_map<int, bool> keys;
-    unordered_map<int, string> map;
+    vector<int> keys;
+    unordered_map<int, vector<string>> map;
     for (int i = 0; i < N; i++) {
         cin >> s_i;
-        map[sumString(s_i)] = s_i;
-        if (keys.count(sumString(s_i)) == 0) keys[sumString(s_i)] = true; 
+        key = sumString(s_i);
+        if (map.count(key) == 0) {
+            keys.push_back(key);
+        }
+        map[key].push_back(s_i);
     }
-    for (auto key : keys) {
+    for (int key : keys) {
         for (auto it : map) {
-            if (key.first == it.first) cout << it.second << " ";
+            if (it.first == key) {
+                for (string word : it.second) {
+                    cout << word << " ";
+                }
+            }
         }
         cout << endl;
     }
-    
     return 0;
 }
