@@ -6,6 +6,7 @@ int sumString(string s) {
     for (char a : s) {
         sum += a;
     }
+    return sum;
 }
 
 int main() {
