@@ -19,18 +19,22 @@ int main() {
         } else if (!check && map[i] == 0) {
             count++;
             if (max < count) max = count;
-            count = 0;
             check = true;
         } if (check && map[i] != 0) {
             count++;
         } else if (check && map[i] == 0) {
             count++;
             if (max < count) max = count;
-            count = 0;
+            count = 1;
         }
     }
     if (!checkConstraint) cout << 0;
-    else cout << count;
+    else cout << max;
     
     return 0;
 }
+
+
+
+
+
